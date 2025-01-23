@@ -1,4 +1,4 @@
-name: Frontend Continuous Deployment
+name: Frontend CD
 
 on:
   push:
@@ -22,6 +22,10 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        working-directory: starter/frontend
+
+      - name: Run ESLint and auto-fix
+        run: npx eslint . --fix
         working-directory: starter/frontend
 
       - name: Run lint
